@@ -1,0 +1,28 @@
+# Python cache / compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+
+# Jupyter / notebooks
+.ipynb_checkpoints/
+
+# Streamlit cache
+.streamlit/
+
+# Test / coverage outputs
+.pytest_cache/
+htmlcov/
+.coverage
+*.log
+
+# IDE / editor configs
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
