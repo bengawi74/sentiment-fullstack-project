@@ -1,81 +1,66 @@
-# Sentiment Fullstack Project
+# Sentiment Analysis Full-Stack System
 
-This project is part of my Applied AI Solutions Development program at George Brown College.  
-I wanted to build something practical that collects comments from different online sources, analyzes their sentiment, and shows the results in a simple dashboard.  
-The goal is to help a user understand what people are saying about a topic or a product in a clear and organized way.
-
-The system has two parts:
-
-- **Backend (FastAPI)** – handles all processing, API routes, and sentiment predictions  
-- **Frontend (Streamlit)** – provides an interface for testing text, YouTube comments, and sample Amazon reviews
+This project is a complete sentiment analysis system that collects, processes, and analyzes text from different online sources. It uses a FastAPI backend for handling requests and a Streamlit interface for visualizing the results. The system can classify text as positive, negative, or neutral using several machine learning and deep learning models.
 
 ---
 
-## 1. Project Overview
+## Project Overview
 
-The workflow reflects topics from the Full Stack Data Science Systems course, including:
-
-- API design  
-- Data collection  
-- Data cleaning and preprocessing  
-- Model integration  
-- Error handling  
-- Basic dashboard development  
-
-The system can:
-
-- Collect YouTube comments using the YouTube API  
-- Analyze a single text message  
-- Process a small sample of Amazon product reviews  
-- Apply a sentiment model (positive / negative)  
-- Show results in charts and tables inside Streamlit
+The goal of this project is to help users understand how people feel about a product or topic by analyzing written comments. The system takes text from different platforms, cleans it, runs it through sentiment models, and then shows the results in a simple dashboard. I used FastAPI to build the backend and Streamlit to build the interface. The project includes several models so I could compare how they perform on the same data.
 
 ---
 
-## 2. System Structure
+## Models Used
 
-### **Backend (FastAPI)**  
-Located in the `backend/` folder.
+To understand the difference between traditional machine learning and deep learning approaches, I trained several models on the same dataset:
 
-Main responsibilities:
+• Logistic Regression  
+• Feed-Forward Neural Network  
+• LSTM  
+• DistilBERT  
 
-- Receive text from the dashboard  
-- Clean and process the text  
-- Run the sentiment model  
-- Collect YouTube comments through the API  
-- Return structured results to the frontend  
+Each model was evaluated on accuracy, precision, recall, and F1-score. This made it easy to compare their strengths and weaknesses.
+ 
 
-The backend is organized into modular files:
+## System Structure
 
-- `main.py` – main application and API routes  
-- `youtube_client.py` – collect YouTube comments  
-- `amazon_client.py` – local fallback sample dataset  
-- `model_loader.py` – load the sentiment model  
-- `schemas.py` – request and response models  
+The system is built in two main parts. The first part is the backend, created with FastAPI. It receives text, cleans it, runs it through the selected model, and returns the sentiment result. The second part is the Streamlit interface. This is where users can enter text, run the analysis, and see the output. The dashboard also displays counts, charts, and sample results.
 
-### **Frontend (Streamlit)**  
-Located in the `frontend/` folder.
-
-Main responsibilities:
-
-- Provide a clean interface  
-- Send user inputs to the backend  
-- Display results, charts, and tables  
-- Make the system easy to test and present  
-
-Users can:
-
-- Analyze a single text  
-- Analyze YouTube comments by URL  
-- View sentiment breakdowns  
-- Explore sample Amazon review analysis  
+This setup separates the model logic from the user interface, making the system easier to manage and update.
+  
 
 ---
 
-## 3. How to Run the Project
+## How to Run the System
 
-### **1. Start the backend (FastAPI)**
+The project has two parts, the FastAPI backend and the Streamlit dashboard. Each one needs to be started separately.
 
-```bash
-cd backend
+### 1. Start the FastAPI backend
+Open your terminal, go to the project folder, and run:
+
 uvicorn main:app --reload
+
+This starts the API. It will show the URL in the terminal, usually something like:
+
+http://127.0.0.1:8000
+
+Keep this running.
+
+### 2. Start the Streamlit dashboard
+Open a new terminal window and run:
+
+streamlit run streamlit_app.py
+
+The dashboard will open in your browser. From there you can enter text, run the analysis, and see the results.
+
+
+---
+
+## Results
+
+Each model performed differently based on how it handles text. Logistic Regression worked well for simple patterns. The feed-forward network improved on that by learning from more features. The LSTM did better with longer sentences because it can understand sequence information. DistilBERT gave the strongest results overall since it is built on a modern transformer architecture. The dashboard shows the predictions clearly so users can compare the outcomes across different models.
+
+## What I Learned
+
+I learned how to build a full workflow that goes from data collection, to text cleaning, to training several models, and finally to building a usable application. Working with FastAPI and Streamlit helped me understand how machine learning models can be turned into practical tools. Training and comparing different models also gave me a better sense of how text classifiers behave and what affects their performance.
+
